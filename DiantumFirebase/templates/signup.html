@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign</title>
+    {% if message %}
+        <script>
+            alert('{{message}}');
+        </script>
+    {% endif %}
+</head>
+<body>
+    <form action="/firebase/signUp_register/" method="POST">
+        {% csrf_token %} 
+        <label>Name</label>
+        <input type="text" name="name" id="name">
+
+        <label>Email</label>
+        <input type="email" name="email" id="email">
+
+        <label>Password</label>
+        <input type="password" name="password" id="password">
+
+        <button type="submit" name="signUp-register" id="signUp-register" onclick="location.href='{% url 'namespacefirebase:signUp_register' %}'">Sign up</button>
+    </form>
+</body>
+</html>

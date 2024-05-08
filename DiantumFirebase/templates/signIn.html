@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign</title>
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                // Obtener el mensaje de error de Django si existe
+                var errorMessage = "{{ message }}";
+                    
+                // Si hay un mensaje de error, mostrarlo como una alerta
+                if (errorMessage) {
+                    alert(errorMessage);
+                }
+            </script>                        
+        {% endfor %}
+    {% endif %}
+</head>
+<body>
+    <form action="/firebase/signIn/" method="POST">
+        {% csrf_token %} 
+        <label>Email</label>
+        <input type="email" name="email" id="email">
+    
+        <label>Password</label>
+        <input type="password" name="password" id="password">
+
+        <button type="submit" name="submit" id="submit">Sign in</button>
+        <button type="button" name="signUp" id="signUp" onclick="location.href='{% url 'namespacefirebase:signUp' %}'">Sign up</button>
+    </form>
+</body>
+</html>
